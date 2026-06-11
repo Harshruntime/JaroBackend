@@ -1,0 +1,416 @@
+const User = require("./user.schema");
+const authConfig = require("../features/auth/auth.config");
+const { Field } = require("../utils/schemas");
+const countries = require("../constants/countries");
+const validator = require("validator");
+
+module.exports = {
+    $schemaName: "Workspace",
+    $apiSlug: "auth",
+    workspaceType: new Field({
+        name: "Workspace Type",
+        type: Number,
+        required: false,
+        default: authConfig.workspaceTypes.profile,
+        enum: Object.values(authConfig.workspaceTypes),
+        validator: null,
+        errorMessage: "",
+        showInTable: true,
+        showInForm: true,
+        fullwidth: false,
+        sortAsc: (a, b) => a - b,
+        sortDesc: (a, b) => b - a,
+        filter: (type, check) => +type === +check,
+    }),
+    userAppRole: new Field({
+        name: "User's App Role",
+        type: Number,
+        required: false,
+        default: authConfig.appUserRoles.user,
+        enum: Object.values(authConfig.appUserRoles),
+        validator: null,
+        errorMessage: "",
+        showInTable: true,
+        showInForm: true,
+        fullwidth: false,
+    }),
+    userWorkspaceRole: new Field({
+        name: "User's Workspace Role",
+        type: Number,
+        required: false,
+        default: authConfig.userWorkspaceRoles.profile,
+        enum: Object.values(authConfig.userWorkspaceRoles),
+        validator: null,
+        errorMessage: "",
+        showInTable: true,
+        showInForm: true,
+        fullwidth: false,
+        sortAsc: (a, b) => a - b,
+        sortDesc: (a, b) => b - a,
+        filter: (type, check) => +type === +check,
+    }),
+    admin: new Field({
+        name: "User",
+        type: User,
+        required: false,
+        default: null,
+        enum: null,
+        showInTable: true,
+        showInForm: true,
+        fullwidth: false,
+    }),
+    fcmToken: new Field({
+        name: "FCM Token",
+        type: String,
+        required: false,
+        default: null,
+        enum: null,
+        showInTable: true,
+        showInForm: true,
+        fullwidth: false,
+    }),
+    lastLogin: new Field({
+        name: "Last Login",
+        type: Date,
+        required: false,
+        unique: false,
+        default: null,
+        enum: null,
+        validator: (value) => validator.isDate(value),
+        errorMessage: "Should be a valid date",
+        showInTable: false,
+        showInForm: true,
+        fullwidth: false,
+    }),
+    status: new Field({
+        name: "Status",
+        type: Number,
+        required: false,
+        default: authConfig.workspaceStatus.active,
+        enum: Object.values(authConfig.workspaceStatus),
+        validator: null,
+        errorMessage: "",
+        showInTable: true,
+        showInForm: false,
+        fullwidth: false,
+        sortAsc: (a, b) => a - b,
+        sortDesc: (a, b) => b - a,
+        filter: (status, check) => +status === +check,
+    }),
+    data: new Field({
+        name: "Data",
+        type: Object,
+        required: false,
+        default: null,
+        enum: null,
+        validator: null,
+        errorMessage: "",
+        showInTable: true,
+        showInForm: false,
+        fullwidth: false,
+    }),
+    address: {
+        street: new Field({
+            name: "Street Address",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => value && value.length > 0,
+            errorMessage: "Street address is required",
+            showInTable: true,
+            showInForm: true,
+            fullWidth: true,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (address, check) => address.toLowerCase().includes(check.toLowerCase()),
+        }),
+        city: new Field({
+            name: "City",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => value && value.length > 0,
+            errorMessage: "City is required",
+            showInTable: true,
+            showInForm: true,
+            fullWidth: false,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (address, check) => address.toLowerCase().includes(check.toLowerCase()),
+        }),
+        state: new Field({
+            name: "State",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => value && value.length > 0,
+            errorMessage: "State is required",
+            showInTable: true,
+            showInForm: true,
+            fullWidth: false,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (address, check) => address.toLowerCase().includes(check.toLowerCase()),
+        }),
+        pincode: new Field({
+            name: "Pincode",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => validator.isPostalCode(value, "IN"),
+            errorMessage: "Should be a valid pincode",
+            showInTable: true,
+            showInForm: true,
+            fullWidth: false,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (code, check) => code.includes(check),
+        }),
+        country: new Field({
+            name: "Country",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: Object.values(countries), // Example country options
+            validator: (value) => value && Object.values(countries).includes(value),
+            errorMessage: "Should be a valid country",
+            showInTable: true,
+            showInForm: true,
+            fullWidth: false,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (country, check) => country.toLowerCase().includes(check.toLowerCase()),
+        }),
+        lat: new Field({
+            name: "Latitude",
+            type: Number,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => value !== null && !isNaN(value) && value >= -90 && value <= 90,
+            errorMessage: "Latitude should be a number between -90 and 90",
+            showInTable: true,
+            showInForm: true,
+            fullWidth: false,
+            sortAsc: (a, b) => a - b,
+            sortDesc: (a, b) => b - a,
+            filter: (lat, check) => lat.toString().includes(check.toString()),
+        }),
+        long: new Field({
+            name: "Longitude",
+            type: Number,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => value !== null && !isNaN(value) && value >= -180 && value <= 180,
+            errorMessage: "Longitude should be a number between -180 and 180",
+            showInTable: true,
+            showInForm: true,
+            fullWidth: false,
+            sortAsc: (a, b) => a - b,
+            sortDesc: (a, b) => b - a,
+            filter: (long, check) => long.toString().includes(check.toString()),
+        }),
+    },
+    legal: {
+        taxId: new Field({
+            name: "Tax ID",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => validator.isLength(value, { min: 10, max: 10 }),
+            errorMessage: "Tax ID should be 10 characters long",
+            showInTable: false,
+            showInForm: true,
+            fullWidth: false,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (taxId, check) => taxId.toLowerCase().includes(check.toLowerCase()),
+        }),
+        taxIdUrl: new Field({
+            name: "Tax ID URL",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => validator.isURL(value),
+            errorMessage: "Tax ID URL should be a valid url",
+            showInTable: false,
+            showInForm: true,
+            fullWidth: false,
+        }),
+        govtId: new Field({
+            name: "Govt ID",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => validator.isLength(value, { min: 12, max: 12 }),
+            errorMessage: "Govt ID should be 12 characters long",
+            showInTable: false,
+            showInForm: true,
+            fullWidth: false,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (govtId, check) => govtId.toLowerCase().includes(check.toLowerCase()),
+        }),
+        govtIdUrl: new Field({
+            name: "Govt ID URL",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => validator.isURL(value),
+            errorMessage: "Govt ID URL should be a valid url",
+            showInTable: false,
+            showInForm: true,
+            fullWidth: false,
+        }),
+        businessId: new Field({
+            name: "Business ID",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => validator.isLength(value, { min: 15, max: 15 }),
+            errorMessage: "Business ID should be 15 characters long",
+            showInTable: false,
+            showInForm: true,
+            fullWidth: false,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (businessId, check) => businessId.toLowerCase().includes(check.toLowerCase()),
+        }),
+        businessIdUrl: new Field({
+            name: "Business ID URL",
+            type: String,
+            required: false,
+            unique: false,
+            default: null,
+            enum: null,
+            validator: (value) => validator.isURL(value),
+            errorMessage: "Business ID URL should be a valid url",
+            showInTable: false,
+            showInForm: true,
+            fullWidth: false,
+        }),
+        gst: new Field({
+            name: "GST No.",
+            type: String,
+            getter: function () {
+                // Regular function
+                return this.businessId;
+            },
+            setter: function (value) {
+                // Regular function
+                this.businessId = value;
+            },
+            showInTable: true,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (businessId, check) => businessId.toLowerCase().includes(check.toLowerCase()),
+        }),
+        gstUrl: new Field({
+            name: "GST URL",
+            type: String,
+            getter: function () {
+                // Regular function
+                return this.businessIdUrl;
+            },
+            setter: function (value) {
+                // Regular function
+                this.businessIdUrl = value;
+            },
+            showInTable: true,
+        }),
+        pan: new Field({
+            name: "Pan No.",
+            type: String,
+            getter: function () {
+                // Regular function
+                return this.taxId;
+            },
+            setter: function (value) {
+                // Regular function
+                this.taxId = value;
+            },
+            showInTable: true,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (taxId, check) => taxId.toLowerCase().includes(check.toLowerCase()),
+        }),
+        panIdUrl: new Field({
+            name: "Pan URL",
+            type: String,
+            getter: function () {
+                // Regular function
+                return this.taxIdUrl;
+            },
+            setter: function (value) {
+                // Regular function
+                this.taxIdUrl = value;
+            },
+            showInTable: true,
+        }),
+        aadhaar: new Field({
+            name: "Aadhaar No.",
+            type: String,
+            getter: function () {
+                // Regular function
+                return this.govtId;
+            },
+            setter: function (value) {
+                // Regular function
+                this.govtId = value;
+            },
+            showInTable: true,
+            sortAsc: (a, b) => a.localeCompare(b),
+            sortDesc: (a, b) => b.localeCompare(a),
+            filter: (taxId, check) => taxId.toLowerCase().includes(check.toLowerCase()),
+        }),
+        aadhaarUrl: new Field({
+            name: "Aadhaar URL",
+            type: String,
+            getter: function () {
+                // Regular function
+                return this.govtIdUrl;
+            },
+            setter: function (value) {
+                // Regular function
+                this.govtIdUrl = value;
+            },
+            showInTable: true,
+        }),
+    },
+    fullAddress: new Field({
+        name: "Address",
+        type: String,
+        getter: function () {
+            let value = "" + this.address.street;
+            if (this.address.city) value += ", " + this.address.city;
+            if (this.address.state) value += ", " + this.address.state;
+            if (this.address.country) value += ", " + this.address.country;
+            if (this.address.pincode) value += ", " + this.address.pincode;
+            return value;
+        },
+        showInTable: true,
+        filter: (address, check) => address.toLowerCase().includes(check.toLowerCase()),
+    }),
+};

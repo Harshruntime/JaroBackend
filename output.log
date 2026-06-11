@@ -1,0 +1,307 @@
+Connecting to MongoDB...
+2025-09-23T20:14:05.237Z [[34minfo[39m]: Database connection initiated.
+2025-09-23T20:14:06.188Z [[32msuccess[39m]: Database connection successful.
+✅ Database connected successfully
+Starting LeadSquared users sync process...
+Starting opportunities sync...
+Found 130188 total opportunities to process
+ Processed page 1: 1000 opportunities
+Processing 1 pages total
+✅ Opportunities sync complete: 1000 opportunities processed
+Sync phase 1 complete: 31363 app users loaded
+ Starting leads fetch for 1000 prospects...
+ Fetched batch 1/1: 1000 leads
+✅ Leads fetch complete: 1000 total leads retrieved
+Sample lead ==> {
+  ProspectID: '34fb7509-b788-4350-8cf4-7268e9b0b26f',
+  Phone: '+91-9717284305',
+  mx_Alternate_number: null,
+  CreatedOn: '2025-09-23 13:13:31.000',
+  EmailAddress: 'rahul1596@rediffmail.com',
+  FirstName: 'Rahul',
+  LastName: 'Vaish',
+  mx_Date_of_Birth: null,
+  mx_Street1: null,
+  mx_Res_Address_Line_1: null,
+  mx_City: 'Gurugram',
+  mx_Res_City: null,
+  mx_State: null,
+  mx_States: null,
+  mx_Res_Pincode: null,
+  mx_Country: null,
+  mx_Other_Country: null
+}
+Sync phase 2 complete: 1000 leads fetched
+Starting user data processing...
+ Processing 1000 leads against 30519 existing users (by phone) and 31353 existing users (by email)
+ Invalid phone number format: +1-4374251996 -> 14374251996
+ Invalid phone number format: +1-4374251996 -> 14374251996
+Processed 100/1000 leads...
+ Invalid phone number format: +967-0777474741 -> 9670777474741
+ Invalid phone number format: +967-0777474741 -> 9670777474741
+Processed 200/1000 leads...
+ Invalid phone number format: +971-501209544 -> 971501209544
+ Invalid phone number format: +971-501209544 -> 971501209544
+ Invalid phone number format: +1-8445038573 -> 18445038573
+ Invalid phone number format: +1-8445038573 -> 18445038573
+Processed 300/1000 leads...
+ Invalid phone number format: +1-6174183853 -> 16174183853
+ Invalid phone number format: +1-6174183853 -> 16174183853
+Processed 400/1000 leads...
+ Invalid phone number format: +967-7740502150 -> 9677740502150
+ Invalid phone number format: +967-7740502150 -> 9677740502150
+Processed 500/1000 leads...
+ Invalid phone number format: +971-1555856391 -> 9711555856391
+ Invalid phone number format: +971-1555856391 -> 9711555856391
+ Invalid phone number format: +60-1131220343 -> 601131220343
+ Invalid phone number format: +60-1131220343 -> 601131220343
+ Invalid phone number format: 954466519191 -> 954466519191
+ Invalid phone number format: 954466519191 -> 954466519191
+ Invalid phone number format: +1-5124316001 -> 15124316001
+ Invalid phone number format: +1-5124316001 -> 15124316001
+Processed 600/1000 leads...
+ Invalid phone number format: +60-1119534325 -> 601119534325
+ Invalid phone number format: +60-1119534325 -> 601119534325
+ Invalid phone number format: +60-1119534325 -> 601119534325
+ Invalid phone number format: +60-1119534325 -> 601119534325
+Processed 700/1000 leads...
+Processed 800/1000 leads...
+ Invalid phone number format: +3-1629696603 -> 31629696603
+ Invalid phone number format: +3-1629696603 -> 31629696603
+ Invalid phone number format: +230-5982783300 -> 2305982783300
+ Invalid phone number format: +230-5982783300 -> 2305982783300
+ Invalid phone number format: +1-9525649336 -> 19525649336
+ Invalid phone number format: +1-9525649336 -> 19525649336
+Processed 900/1000 leads...
+ Invalid phone number format: +44-7459176647 -> 447459176647
+ Invalid phone number format: +44-7459176647 -> 447459176647
+ Invalid phone number format: +1-3828852790 -> 13828852790
+ Invalid phone number format: +1-3828852790 -> 13828852790
+Processed 1000/1000 leads...
+ Processing complete: 25 new users, 975 updates, 0 errors
+ Skipping operation for existing email in database: bharti.bhosale11@googlemail.com
+ Deduplicated 1 operations against database
+ Skipping operation for existing email in database: bharti.bhosale11@googlemail.com
+ Deduplicated 1 operations against database
+ Executing 6 bulk operations with throttling...
+Starting 6 concurrent throttled bulk writes
+Starting throttled bulk write: 24 operations in batches of 100, 1 concurrent batches
+Created 1 batches
+Processing batch group 1/1 (1 batches)
+Executing batch 1 (attempt 1/3) with 24 operations
+Starting throttled bulk write: 25 operations in batches of 100, 1 concurrent batches
+Created 1 batches
+Processing batch group 1/1 (1 batches)
+Executing batch 1 (attempt 1/3) with 25 operations
+Starting throttled bulk write: 24 operations in batches of 100, 1 concurrent batches
+Created 1 batches
+Processing batch group 1/1 (1 batches)
+Executing batch 1 (attempt 1/3) with 24 operations
+Starting throttled bulk write: 975 operations in batches of 100, 1 concurrent batches
+Created 10 batches
+Processing batch group 1/10 (1 batches)
+Executing batch 1 (attempt 1/3) with 100 operations
+Starting throttled bulk write: 975 operations in batches of 100, 1 concurrent batches
+Created 10 batches
+Processing batch group 1/10 (1 batches)
+Executing batch 1 (attempt 1/3) with 100 operations
+Starting throttled bulk write: 975 operations in batches of 100, 1 concurrent batches
+Created 10 batches
+Processing batch group 1/10 (1 batches)
+Executing batch 1 (attempt 1/3) with 100 operations
+Batch 1 failed (attempt 1/3): E11000 duplicate key error collection: jaroeducation_v2.users index: email_1 dup key: { email: null }
+Retrying batch 1 in 1000ms...
+Batch 1 completed successfully: 25 operations processed
+Bulk write completed successfully. Stats: {
+  totalOperations: 975,
+  processedOperations: 975,
+  successfulBatches: 1,
+  failedBatches: 0,
+  retryAttempts: 1,
+  duration: '0s',
+  successRate: '100%'
+}
+Batch 1 completed successfully: 100 operations processed
+Batch 1 completed successfully: 88 operations processed
+Processing batch group 2/10 (1 batches)
+Executing batch 2 (attempt 1/3) with 100 operations
+Processing batch group 2/10 (1 batches)
+Executing batch 2 (attempt 1/3) with 100 operations
+Batch 2 completed successfully: 100 operations processed
+Batch 2 completed successfully: 99 operations processed
+Batch 1 failed (attempt 1/3): E11000 duplicate key error collection: jaroeducation_v2.auths index: email_1 dup key: { email: null }
+Retrying batch 1 in 1000ms...
+Processing batch group 3/10 (1 batches)
+Executing batch 3 (attempt 1/3) with 100 operations
+Processing batch group 3/10 (1 batches)
+Executing batch 3 (attempt 1/3) with 100 operations
+Batch 3 completed successfully: 96 operations processed
+Batch 3 completed successfully: 100 operations processed
+Processing batch group 4/10 (1 batches)
+Executing batch 4 (attempt 1/3) with 100 operations
+Processing batch group 4/10 (1 batches)
+Executing batch 4 (attempt 1/3) with 100 operations
+Batch 4 completed successfully: 100 operations processed
+Batch 4 completed successfully: 92 operations processed
+Processing batch group 5/10 (1 batches)
+Executing batch 5 (attempt 1/3) with 100 operations
+Processing batch group 5/10 (1 batches)
+Executing batch 5 (attempt 1/3) with 100 operations
+Batch 5 completed successfully: 100 operations processed
+Executing batch 1 (attempt 2/3) with 24 operations
+Batch 5 completed successfully: 93 operations processed
+Batch 1 failed (attempt 2/3): E11000 duplicate key error collection: jaroeducation_v2.users index: email_1 dup key: { email: null }
+Retrying batch 1 in 2000ms...
+Processing batch group 6/10 (1 batches)
+Executing batch 6 (attempt 1/3) with 100 operations
+Processing batch group 6/10 (1 batches)
+Executing batch 6 (attempt 1/3) with 100 operations
+Batch 6 completed successfully: 100 operations processed
+Batch 6 completed successfully: 91 operations processed
+Processing batch group 7/10 (1 batches)
+Executing batch 7 (attempt 1/3) with 100 operations
+Processing batch group 7/10 (1 batches)
+Executing batch 7 (attempt 1/3) with 100 operations
+Executing batch 1 (attempt 2/3) with 24 operations
+Batch 1 failed (attempt 2/3): E11000 duplicate key error collection: jaroeducation_v2.auths index: email_1 dup key: { email: null }
+Retrying batch 1 in 2000ms...
+Batch 7 completed successfully: 100 operations processed
+Batch 7 completed successfully: 94 operations processed
+Processing batch group 8/10 (1 batches)
+Executing batch 8 (attempt 1/3) with 100 operations
+Processing batch group 8/10 (1 batches)
+Executing batch 8 (attempt 1/3) with 100 operations
+Batch 8 completed successfully: 100 operations processed
+Batch 8 completed successfully: 91 operations processed
+Processing batch group 9/10 (1 batches)
+Executing batch 9 (attempt 1/3) with 100 operations
+Processing batch group 9/10 (1 batches)
+Executing batch 9 (attempt 1/3) with 100 operations
+Batch 9 completed successfully: 93 operations processed
+Batch 9 completed successfully: 100 operations processed
+Processing batch group 10/10 (1 batches)
+Executing batch 10 (attempt 1/3) with 75 operations
+Processing batch group 10/10 (1 batches)
+Executing batch 10 (attempt 1/3) with 75 operations
+Batch 10 completed successfully: 75 operations processed
+Bulk write completed successfully. Stats: {
+  totalOperations: 975,
+  processedOperations: 975,
+  successfulBatches: 20,
+  failedBatches: 0,
+  retryAttempts: 4,
+  duration: '2s',
+  successRate: '100%'
+}
+Batch 10 completed successfully: 61 operations processed
+Bulk write completed successfully. Stats: {
+  totalOperations: 975,
+  processedOperations: 975,
+  successfulBatches: 21,
+  failedBatches: 0,
+  retryAttempts: 4,
+  duration: '2s',
+  successRate: '100%'
+}
+Batch 1 failed (attempt 1/3): E11000 duplicate key error collection: jaroeducation_v2.auths index: phone1_1 dup key: { phone1: null }
+Retrying batch 1 in 1000ms...
+Executing batch 1 (attempt 3/3) with 24 operations
+Batch 1 failed (attempt 3/3): E11000 duplicate key error collection: jaroeducation_v2.users index: email_1 dup key: { email: null }
+Batch 1 failed after 3 attempts: E11000 duplicate key error collection: jaroeducation_v2.users index: email_1 dup key: { email: null }
+Bulk write completed successfully. Stats: {
+  totalOperations: 975,
+  processedOperations: 975,
+  successfulBatches: 21,
+  failedBatches: 1,
+  retryAttempts: 6,
+  duration: '3s',
+  successRate: '100%'
+}
+Executing batch 1 (attempt 3/3) with 24 operations
+Batch 1 failed (attempt 3/3): E11000 duplicate key error collection: jaroeducation_v2.auths index: email_1 dup key: { email: null }
+Batch 1 failed after 3 attempts: E11000 duplicate key error collection: jaroeducation_v2.auths index: email_1 dup key: { email: null }
+Bulk write completed successfully. Stats: {
+  totalOperations: 975,
+  processedOperations: 975,
+  successfulBatches: 21,
+  failedBatches: 2,
+  retryAttempts: 7,
+  duration: '4s',
+  successRate: '100%'
+}
+Executing batch 1 (attempt 2/3) with 100 operations
+Batch 1 failed (attempt 2/3): E11000 duplicate key error collection: jaroeducation_v2.auths index: phone1_1 dup key: { phone1: null }
+Retrying batch 1 in 2000ms...
+Executing batch 1 (attempt 3/3) with 100 operations
+Batch 1 failed (attempt 3/3): E11000 duplicate key error collection: jaroeducation_v2.auths index: phone1_1 dup key: { phone1: null }
+Batch 1 failed after 3 attempts: E11000 duplicate key error collection: jaroeducation_v2.auths index: phone1_1 dup key: { phone1: null }
+Processing batch group 2/10 (1 batches)
+Executing batch 2 (attempt 1/3) with 100 operations
+Batch 2 completed successfully: 100 operations processed
+Processing batch group 3/10 (1 batches)
+Executing batch 3 (attempt 1/3) with 100 operations
+Batch 3 completed successfully: 100 operations processed
+Processing batch group 4/10 (1 batches)
+Executing batch 4 (attempt 1/3) with 100 operations
+Batch 4 completed successfully: 100 operations processed
+Processing batch group 5/10 (1 batches)
+Executing batch 5 (attempt 1/3) with 100 operations
+Batch 5 completed successfully: 100 operations processed
+Processing batch group 6/10 (1 batches)
+Executing batch 6 (attempt 1/3) with 100 operations
+Batch 6 completed successfully: 100 operations processed
+Processing batch group 7/10 (1 batches)
+Executing batch 7 (attempt 1/3) with 100 operations
+Batch 7 completed successfully: 100 operations processed
+Processing batch group 8/10 (1 batches)
+Executing batch 8 (attempt 1/3) with 100 operations
+Batch 8 completed successfully: 100 operations processed
+Processing batch group 9/10 (1 batches)
+Executing batch 9 (attempt 1/3) with 100 operations
+Batch 9 completed successfully: 100 operations processed
+Processing batch group 10/10 (1 batches)
+Executing batch 10 (attempt 1/3) with 75 operations
+Batch 10 completed successfully: 75 operations processed
+Bulk write completed successfully. Stats: {
+  totalOperations: 975,
+  processedOperations: 975,
+  successfulBatches: 30,
+  failedBatches: 3,
+  retryAttempts: 9,
+  duration: '33s',
+  successRate: '100%'
+}
+All bulk writes completed. Stats: {
+  totalOperations: 975,
+  processedOperations: 975,
+  successfulBatches: 30,
+  failedBatches: 3,
+  retryAttempts: 9,
+  duration: '33s',
+  successRate: '100%'
+}
+✅ Successfully executed all bulk operations
+Throttling stats: {
+  totalOperations: 975,
+  processedOperations: 975,
+  successfulBatches: 30,
+  failedBatches: 3,
+  retryAttempts: 9,
+  startTime: 2025-09-23T20:14:18.023Z,
+  endTime: 2025-09-23T20:14:51.385Z
+}
+✅ User data processing complete:
+   New users registered: 25
+   Existing users updated: 975
+   Errors encountered: 0
+   Duplicate operations filtered: 1 users, 1 auths
+✅ LeadSquared users sync process completed successfully
+
+SYNC SUMMARY:
+==================
+Total app users: 31363
+Total prospects: 1000
+Total opportunities: 1000
+Users with lead data: 0
+==================
+Database connection closed.

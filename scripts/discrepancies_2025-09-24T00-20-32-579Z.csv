@@ -1,0 +1,2 @@
+Type,Description,Lead ID,User ID,User Full Name,Discrepancy Details
+"invalid_phone","No valid phone1 found for insert operation","262a2520-8a21-11f0-af7f-02ae371772f9","undefined","undefined","Lead has no valid phone number for user creation"
