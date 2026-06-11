@@ -9,7 +9,6 @@ const { port, cookieSecret, populateDB } = require("./config");
 const morgan = require("morgan");
 const cors = require("cors");
 const { startAgenda } = require("./config/agenda");
-
 const runServer = async () => {
   try {
     logger.info("Server initiated");
